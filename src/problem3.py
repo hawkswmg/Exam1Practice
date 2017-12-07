@@ -245,6 +245,31 @@ def problem3b(m, point1):
     #    TIME ESTIMATE:   20 to 30 minutes.
     # ------------------------------------------------------------------
 
+    window = rg.RoseWindow(400,650)
+    for k in range(m):
+        length = 50
+        start1 = rg.Point(point1.x,point1.y + 60 * k)
+        end1 = rg.Point(point1.x, point1.y + length + 60 * k)
+        line = rg.Line(start1,end1)
+        n = 3 + 2 * k
+        for j in range(n):
+            start = rg.Point(start1.x + 20 * j,start1.y + 10 * j)
+            end = rg.Point(start.x , start.y+length)
+            line1 = rg.Line(start, end)
+            if 1 + 2 * j > 13:
+                line1.thickness = 13
+            else:
+                line1.thickness = 1 + 2 * j
+            line1.attach_to(window)
+            window.render()
+
+
+        line.attach_to(window)
+        window.render()
+
+    window.close_on_mouse_click()
+
+
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
